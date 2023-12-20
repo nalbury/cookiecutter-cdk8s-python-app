@@ -13,7 +13,7 @@ To use this project first [install cookiecutter.](https://cookiecutter.readthedo
 
 Then run:
 ```
-cookiecutter gh nalbury/cookiecutter-cdk8s-python-app
+cookiecutter gh:nalbury/cookiecutter-cdk8s-python-app
 ```
 
 You'll be prompted to enter a project name:
