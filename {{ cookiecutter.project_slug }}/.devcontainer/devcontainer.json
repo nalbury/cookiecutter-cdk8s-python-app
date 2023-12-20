@@ -1,0 +1,51 @@
+{
+  "name": "{{ cookiecutter.project_name }}",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile",
+    "target": "devcontainer"
+    // uncomment to install kubectl and mirrord int the devcontainer image
+    // "args": {
+    //   "INSTALL_KUBECTL": "true",
+    //   "INSTALL_MIRRORD": "true"
+    // }
+  },
+  "workspaceFolder": "/src/",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/src,type=bind",
+  // uncomment to mount a local kube config and replace any local k8s cluster hosts with the docker host.docker.internal name
+  // "mounts": [
+  //   "source=${env:HOME}${env:USERPROFILE}/.kube,target=/home/devcontainer/.kube_host/,type=bind"
+  // ],
+  // "postStartCommand": "mkdir -p $HOME/.kube && sed -E 's/0.0.0.0|127.0.0.1|localhost/host.docker.internal/g' $HOME/.kube_host/config > $HOME/.kube/config",
+  "remoteUser": "devcontainer",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[python]": {
+          "editor.insertSpaces": true,
+          "editor.tabSize": 4,
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        }
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "ms-vscode.makefile-tools"
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+cdk8s~=2.68.17
+cdk8s-plus-27~=2.7.70
+constructs~=10.3.0
+
+cdk8s-utils==0.1.1
