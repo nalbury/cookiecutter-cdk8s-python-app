@@ -22,14 +22,18 @@ You'll be prompted to enter a project name:
   [2/2] project_slug (cdk8s-cookiecutter-test):
 ```
 
-After completing the prompts, a new directory matching the project_slug will be created containing the initial scaffold for a Cdk8s python app. You can run the app with the scaffolded code either using a local python/node env + the provided Makefile (the provided devcontainer.json can be used to create this for local dev purposes):
+After completing the prompts, a new directory matching the project_slug will be created containing the initial scaffold for a Cdk8s python app. 
+
+You can run the app with the scaffolded code either using a local python/node env + the provided Makefile:
 ```
 MANIFESTS_ARGS="--help" make manifests 
 ```
+**NOTE** the generated project contains a .devcontainer/.devcontainer.json file with the required runtime/dev dependencies. It can be created with any tool that supports the devcontainer spec e.g. [Github Codespaces](https://docs.github.com/en/codespaces/overview) or [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
-Or you can use the provided dockerfile for a more portable exacutable format:
+
+You can also use the provided dockerfile for a more portable exacutable format (preferred for non development use cases):
 ```
 docker build -t cdk8s-app:local . && docker run cdk8s-app:local --help
 ```
 
-Inpect [`app/main.py`](./{{%20cookiecutter.project_slug%20}}/app/main.py) and [`tests/test_main.py`](./{{%20cookiecutter.project_slug%20}}/tests/test_main.py) for more details on providing user inputs via a YAML config file and writing tests to validate the rendered output.
+Inspect [`app/main.py`](./{{%20cookiecutter.project_slug%20}}/app/main.py) and [`tests/test_main.py`](./{{%20cookiecutter.project_slug%20}}/tests/test_main.py) for more details on providing user inputs via a YAML config file and writing tests to validate the rendered output.
