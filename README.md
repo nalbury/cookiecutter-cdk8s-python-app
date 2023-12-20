@@ -3,9 +3,9 @@
 This is a cookiecutter template for creating cdk8s projects without the cdk8s cli. It differs from the primary cdk8s python framework in the following ways:
 - No cdk8s cli or npm dependency (NOTE: there's still a nodejs runtime dependency for the cdk8s python module) allowing for smaller and less opinionated build/run environments.
 - No requirement to use Pipenv. A simple requirements.txt + venv workflow is assumed but any python dependency management tool can be used.
-- Manifests are synthesized to both the standard `dist/` path _and_ to stdout by default using rhe cli.run() function in the [cdk8s_utils module here.](TODO) This allows for direct piping into various validtion tools as well as kubectl apply etc.
+- Manifests are synthesized to both the standard `dist/` path _and_ to stdout by default using the cli.run() function in the [cdk8s_utils module here.](https://github.com/nalbury/cdk8s-utils) This allows for direct piping into various validation and deployment tools.
 - A default Dockerfile is provided for both building/running the app (i.e. synthesizing the manifests) and for use in a [devcontainer](https://containers.dev).
-- A basic set of example tests + fixtures are provided to demonstrate writing assertions on the rendered manifests.
+- A basic set of example tests + fixtures are provided to demonstrate writing assertions on the rendered manifests (see [`tests/test_main.py`](./{{%20cookiecutter.project_slug%20}}/tests/test_main.py) for more info).
 
 ## Usage
 
@@ -37,3 +37,7 @@ docker build -t cdk8s-app:local . && docker run cdk8s-app:local --help
 ```
 
 Inspect [`app/main.py`](./{{%20cookiecutter.project_slug%20}}/app/main.py) and [`tests/test_main.py`](./{{%20cookiecutter.project_slug%20}}/tests/test_main.py) for more details on providing user inputs via a YAML config file and writing tests to validate the rendered output.
+
+The cdk8s docs themselves can be found here:
+- [cdk8s](https://cdk8s.io/docs/latest/)
+- [cdk8s+](https://cdk8s.io/docs/latest/plus/) (a recommended abstraction for quickly building up manifests using simple expressions)
